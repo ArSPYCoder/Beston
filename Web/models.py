@@ -5,6 +5,13 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Token(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    token = models.CharField(max_length=64)
+
+    def __unicode__(self):
+        return f"{self.user}-token"
+
 
 class Expense(models.Model):
     title = models.CharField(max_length=250)
@@ -13,7 +20,7 @@ class Expense(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __unicode__(self):
-        return self.title
+        return f"Expense{self.date}-{self.amount}"
 
 
 class Incom(models.Model):
@@ -23,4 +30,4 @@ class Incom(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __unicode__(self):
-        return self.title
+        return f"Icome{self.date}-{self.amount}"
