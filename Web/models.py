@@ -13,7 +13,7 @@ class Expense(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __unicode__(self):
-        return self.date, self.amount
+        return self.title
 
 
 class Incom(models.Model):
@@ -21,3 +21,6 @@ class Incom(models.Model):
     date = models.DateTimeField()
     amount = models.BigIntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __unicode__(self):
+        return self.title
