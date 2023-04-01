@@ -12,7 +12,8 @@ class Expense(models.Model):
     amount = models.BigIntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-
+    def __unicode__(self):
+        return self.date, self.amount
 
 
 class Incom(models.Model):
